@@ -206,18 +206,133 @@ print(first_twenty_regions)
 ```
 ------
 ```Python
+import numpy as np
+
+world_alcohol = np.genfromtxt('world_alcohol.csv', delimiter=',',dtype="U75", skip_header=1) 
+
+print(world_alcohol)
+
+vector = np.array([5, 10, 15, 20])
+vector == 10
+
+print(vector == 10)
+
+
+matrix = np.array([[5,10,15],
+                  [20,25,30],
+                  [35,40,45]])
+
+matrix == 25
+
+print(matrix == 25)
 ```
 ------
 ```Python
+import numpy as np
+
+world_alcohol = np.genfromtxt('world_alcohol.csv', delimiter=',',dtype="U75", skip_header=1) 
+
+
+vector = np.array([5, 10, 15, 20])
+
+equal_to_ten = (vector == 10)
+print(vector[equal_to_ten])
+
+
+matrix = np.array([[5,10,15],
+                  [20,25,30],
+                  [35,40,45]])
+
+second_column_25 = (matrix[:,1] == 25)
+print(matrix[second_column_25,:])
+
+country_is_algeria = world_alcohol[:,2] == "Algeria"
+country_is_algeria = world_alcohol[country_is_algeria]
+print(country_is_algeria)
+
+years_is_1984 = world_alcohol[:,0] == "1984"
+years_is_1984 = world_alcohol[years_is_1984]
+print(years_is_1984)
+
+years_1984 = world_alcohol[world_alcohol[:,0] == "1984"]
+print(years_1984)
+
 ```
 ------
 ```Python
+import numpy as np
+
+world_alcohol = np.genfromtxt('world_alcohol.csv', delimiter=',',dtype="U75", skip_header=1) 
+
+
+vector = np.array([5, 10, 15, 20])
+
+equal_to_ten_and_five = (vector == 10) & ( vector == 5)
+
+# ici on a un tableau de booleen qui nous dit si les elements sont égaux à 10 et 5 
+print(equal_to_ten_and_five)
+
+# comme on ne peu pas etre egale a 5 et a 10 a la foi la valeur de retour sera false
+
+equal_to_ten_or_five = (vector == 10) | (vector == 5)
+
+# ici on a un tableau de booleen qui nous dit si les elements sont égaux à 10 ou 5 
+
+print(equal_to_ten_or_five)
+
+is_algeria_and_1986 = (world_alcohol[:,2] == "Algeria") & (world_alcohol[:,0] == "1986")
+
+# ici on a un tableau de booleen qui nous dit si les elements sont égaux à 1986 et algeria
+
+rows_with_algeria_and_1986 = world_alcohol[is_algeria_and_1986,:]
+
+# ici on recupere les lignes qui ont les elements qui sont égaux à 1986 et algeria
+
+print(rows_with_algeria_and_1986)
+
+
 ```
 ------
 ```Python
+
+import numpy as np
+
+world_alcohol = np.genfromtxt('world_alcohol.csv', delimiter=',',dtype="U75", skip_header=1) 
+
+
+vector = np.array([5, 10, 15, 20])
+
+equal_to_ten_or_five = (vector == 10) | (vector == 5)
+print(equal_to_ten_or_five)
+
+vector[equal_to_ten_or_five] = 50
+print(vector)
+
+
+matrix = np.array([[5,10,15],
+                  [20,25,30],
+                  [35,40,45]])
+
+second_column_25 = matrix[:,1] == 25 
+print(second_column_25)
+
+matrix[second_column_25, 1] = 10
+print(matrix)
 ```
 ------
 ```Python
+import numpy as np
+
+world_alcohol = np.genfromtxt('world_alcohol.csv', delimiter=',',dtype="U75", skip_header=1) 
+
+
+world_alcohol_2 = world_alcohol
+
+world_alcohol_2[:,0][world_alcohol_2[:,0] == '1986'] = '2018'
+
+world_alcohol_2[:,3][world_alcohol_2[:,3] == 'Wine'] = 'Beer'
+
+print(world_alcohol_2)
 ```
 ------
 ```Python
