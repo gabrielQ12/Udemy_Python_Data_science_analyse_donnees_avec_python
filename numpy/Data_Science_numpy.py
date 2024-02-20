@@ -24,3 +24,20 @@ for country in countries:
 # on utilise la méthode sum() pour calculer la somme des valeurs de l'array alcohol_column
 
 print(totals)
+
+print("**----**")
+
+highest_value = 0
+highest_key = None
+
+for country in totals:
+    consumption = totals[country]
+    if highest_value < consumption:
+        highest_value = consumption
+        highest_key = country
+# ici la boucle for est utilisée pour parcourir les éléments du dictionnaire totals
+# pour chaque élément du dictionnaire, on vérifie si la valeur est supérieure à la valeur stockée dans la variable highest_value
+# si c'est le cas, on stocke la valeur dans la variable highest_value et la clé dans la variable highest_key        
+# à la fin de la boucle, on obtient le pays avec la plus grande valeur de consommation
+
+print(highest_key, highest_value)
