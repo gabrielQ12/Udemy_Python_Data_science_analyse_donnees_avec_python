@@ -114,7 +114,27 @@ print(last_rows)
 ```
 ------
 ```Python
+import pandas as pd
 
+food_info = pd.read_csv("food_info.csv")
+
+# Objet series représentant la colonne "NDB_No"
+
+
+# 1 methode 
+
+ndb_col = food_info["NDB_No"]
+
+# ici on a crée un objet series qui represente la colonne "NDB_N0" de notre dataframe food_info
+
+
+
+# 2 methode avec une variable pour le nom de la colonne
+
+col_name = "NDB_No"
+ndb_col = food_info[col_name]
+
+print(ndb_col)
 ```
 ------
 ```Python
