@@ -138,15 +138,49 @@ print(ndb_col)
 ```
 ------
 ```Python
+import pandas as pd
 
+food_info = pd.read_csv("food_info.csv")
+
+protein = food_info["Protein_(g)"]
+cholesterol = food_info["Cholestrl_(mg)"]
+
+print(protein)
+print(cholesterol)
 ```
 ------
 ```Python
 
+import pandas as pd
+
+food_info = pd.read_csv("food_info.csv")
+
+# methode 1 
+
+columns = ["Zinc_(mg)", "Copper_(mg)"]
+zinc_copper = food_info[columns]
+
+# ici on a selectionné les colonnes Zinc_(mg) et Copper_(mg) et 
+# on les a stocké dans la variable zinc_copper pour affiché les 2 colonnes 
+
+# methode 2 
+
+zinc_copper = food_info[["Zinc_(mg)", "Copper_(mg)"]]
+
+# ici on a selectionné les colonnes Zinc_(mg) et Copper_(mg) et 
+# on les a stocké dans la variable zinc_copper pour affiché les 2 colonnes 
+
+print(zinc_copper)
+
 ```
 ------
 ```Python
+import pandas as pd
 
+food_info = pd.read_csv("food_info.csv")
+
+selenium_thiamin = food_info [["Shrt_Desc", "Selenium_(mcg)" , "Thiamin_(mg)"]]
+print(selenium_thiamin)
 ```
 ------
 ```Python
