@@ -23,9 +23,9 @@ for country in countries:
 # on utilise la méthode astype() pour convertir le type de données de l'array alcohol_column en float
 # on utilise la méthode sum() pour calculer la somme des valeurs de l'array alcohol_column
 
-print(totals)
+# print(totals)
 
-print("**----**")
+
 
 highest_value = 0
 highest_key = None
