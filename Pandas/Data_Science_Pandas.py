@@ -2,19 +2,14 @@ import pandas as pd
 
 food_info = pd.read_csv("food_info.csv")
 
+# score = 2 x protein - 0.75 x lipide 
+
 col_names = food_info.columns.tolist()
-gram_columns = []
 
-for c in col_names:
-    if c.endswith("(g)"):
-        gram_columns.append(c)
-        
-# ici la boucle for permet de récupérer les colonnes qui se terminent par (g) 
-# grace a la methode endswith() et de les stocker dans une liste
-# ensuite on utilise cette liste pour selectionner les colonnes du dataframe
-        
-gram_df = food_info[gram_columns]
+sodium_grams = food_info["Sodium_(mg)"] / 1000
 
-# on affiche les 3 premieres lignes du dataframe avec toutes les colonnes qui se terminent par (g)
+sugar_milligrams = food_info["Sugar_Tot_(g)"] * 1000
 
-print(gram_df.head(3))
+print(sodium_grams)
+print(sugar_milligrams)
+
