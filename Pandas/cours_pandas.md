@@ -351,14 +351,35 @@ print(normalized_calories)
 normalized_protein = food_info["Protein_(g)"] / food_info["Protein_(g)"].max()
 normalized_fat = food_info["Lipid_Tot_(g)"] / food_info["Lipid_Tot_(g)"].max()
 
-print("**delimiter**")
-print(normalized_protein)
-print("**delimiter**")
-print(normalized_fat)
+food_info["Normalized_Protein"] = normalized_protein
+food_info["Normalized_Fat"] = normalized_fat
+
+print(food_info.head())
 
 ```
 ------
 ```Python
+import pandas as pd
+
+food_info = pd.read_csv("food_info.csv")
+
+# sort_values() est une méthode qui permet de trier un DataFrame par rapport à une colonne
+
+food_info.sort_values("Sodium_(mg)")
+
+# Trier et remplacer l'ancien dataframe
+
+food_info.sort_values("Sodium_(mg)", inplace=True)
+
+# ici inplace=True permet de remplacer l'ancien dataframe par le nouveau dataframe trié
+
+# Trier par ordre décroissant
+
+food_info.sort_values("Sodium_(mg)", inplace=True, ascending=False) 
+
+# ici ascending=False permet de trier par ordre décroissant
+
+
 
 ```
 ------
