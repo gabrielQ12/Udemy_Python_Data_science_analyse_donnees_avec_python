@@ -277,14 +277,84 @@ print(milligrams_of_calcium_and_iron)
 ```
 ------
 ```Python
+import pandas as pd
+
+food_info = pd.read_csv("food_info.csv")
+
+protein = food_info["Protein_(g)"] *2
+fat = food_info["Lipid_Tot_(g)"] * -0.75
+
+rating = protein + fat
+
+print(rating)
 
 ```
 ------
 ```Python
+import pandas as pd
+
+food_info = pd.read_csv("food_info.csv")
+
+# series.max() permet de trouver la valeur maximale dans une série
+
+max_calories = food_info["Energ_Kcal"].max() 
+
+# ici on trouve la valeur maximale de la colonne "Energ_Kcal" dans le dataframe food_info
+# on peut aussi utiliser la méthode .min() pour trouver la valeur minimale
+# on peut aussi utiliser la méthode .mean() pour trouver la moyenne
+# on peut aussi utiliser la méthode .sum() pour trouver la somme
+# on peut aussi utiliser la méthode .std() pour trouver l'écart type
+# on peut aussi utiliser la méthode .median() pour trouver la médiane
+# on peut aussi utiliser la méthode .mode() pour trouver le mode
+# on peut aussi utiliser la méthode .value_counts() pour trouver le nombre de fois que chaque valeur apparaît
+# on peut aussi utiliser la méthode .describe() pour obtenir des statistiques sommaires pour chaque colonne
+# on peut aussi utiliser la méthode .corr() pour obtenir la corrélation entre les colonnes
+# on peut aussi utiliser la méthode .cov() pour obtenir la covariance entre les colonnes
+# on peut aussi utiliser la méthode .kurt() pour obtenir l'aplatissement des colonnes
+# on peut aussi utiliser la méthode .skew() pour obtenir l'asymétrie des colonnes
+# on peut aussi utiliser la méthode .abs() pour obtenir la valeur absolue des colonnes
+# on peut aussi utiliser la méthode .round() pour arrondir les valeurs des colonnes
+# on peut aussi utiliser la méthode .cumsum() pour obtenir la somme cumulée des colonnes
+# on peut aussi utiliser la méthode .cummax() pour obtenir le maximum cumulé des colonnes
+# on peut aussi utiliser la méthode .cummin() pour obtenir le minimum cumulé des colonnes
+# on peut aussi utiliser la méthode .cumprod() pour obtenir le produit cumulé des colonnes
+# on peut aussi utiliser la méthode .diff() pour obtenir la différence entre les colonnes
+# on peut aussi utiliser la méthode .pct_change() pour obtenir le pourcentage de changement entre les colonnes
+# on peut aussi utiliser la méthode .rank() pour obtenir le rang de chaque valeur dans les colonnes
+# on peut aussi utiliser la méthode .sort_values() pour trier les valeurs dans les colonnes
+# on peut aussi utiliser la méthode .sort_index() pour trier les index dans les colonnes
+
+# Diviser les valeurs de la colonnes "energy_kcal" par la valeur maximale de cette colonne
+
+normalized_calories = food_info["Energ_Kcal"] / max_calories
+print(normalized_calories)
+
+# ici on divise chaque valeur de la colonne "Energ_Kcal" par la valeur maximale de cette colonne
+# ce qui nous retourne un objet Series avec les valeurs normalisées
 
 ```
 ------
 ```Python
+import pandas as pd
+
+food_info = pd.read_csv("food_info.csv")
+
+
+
+max_calories = food_info["Energ_Kcal"].max() 
+
+
+
+normalized_calories = food_info["Energ_Kcal"] / max_calories
+print(normalized_calories)
+
+normalized_protein = food_info["Protein_(g)"] / food_info["Protein_(g)"].max()
+normalized_fat = food_info["Lipid_Tot_(g)"] / food_info["Lipid_Tot_(g)"].max()
+
+print("**delimiter**")
+print(normalized_protein)
+print("**delimiter**")
+print(normalized_fat)
 
 ```
 ------
