@@ -384,35 +384,96 @@ food_info.sort_values("Sodium_(mg)", inplace=True, ascending=False)
 ```
 ------
 ```Python
+import pandas as pd
 
+food_info = pd.read_csv("food_info.csv")
+
+pd.isnull()
+## ici isnull() est une fonction qui permet de vérifier si une valeur est NaN ou pas
 ```
 ------
 ```Python
-
+# series.mean() est une méthode qui calcule la moyenne de toutes les valeurs dans une série en ignorant les valeur manquante
 ```
 ------
 ```Python
+import pandas as pd
 
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+fare_by_class = {}
+passenger_classes = [1, 2, 3]
+
+for this_class in passenger_classes:
+    pclass_rows = titanic_survival[titanic_survival["Pclass"] == this_class]
+    pclass_fares = pclass_rows["Fare"]
+    fare_by_class[this_class] = pclass_fares.mean()
+    
+print(fare_by_class)
 ```
 ------
 ```Python
+import pandas as pd
+import numpy
 
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+# pivot_table() permet de créer des tableaux croisés dynamiques et donc de réorganiser les données pour faire apparaître des informations différentes.
+
+passenger_class_fares=titanic_survival.pivot_table(index="Pclass", values="Fare", aggfunc=numpy.mean)
 ```
 ------
 ```Python
+import pandas as pd
+import numpy
 
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+# .dropna() est une methode qui permet de supprimer les valeurs manquantes
+# on utilise (axis=0) pour supprimer les lignes et (axis=1) pour supprimer les colonnes
+
+
+drop_na_rows = titanic_survival.dropna(axis=0)
+print(drop_na_rows)
+
+drop_na_columns = titanic_survival.dropna(axis=1)
+print(drop_na_columns)
 ```
 ------
 ```Python
+import pandas as pd
+import numpy
 
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+# .loc() permet de selectionner des lignes et des colonnes par leur label
 ```
 ------
 ```Python
+import pandas as pd
+import numpy
 
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+# reset_index(drop=true) permet de réindexer le dataframe
 ```
 ------
 ```Python
+import pandas as pd
+import numpy
 
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+# .apply() est une method qui permet d'appliquer une fonction sur chaque élément d'une colonne
+# si on ajoute (axis=1) a la methode .apply() on applique la fonction a chaque ligne
+
+
+def row_100(column):
+    item = column.loc[99]
+    return item
+
+row_100_var = titanic_survival.apply(row_100)
+print(row_100_var)
 ```
 ------
 ```Python

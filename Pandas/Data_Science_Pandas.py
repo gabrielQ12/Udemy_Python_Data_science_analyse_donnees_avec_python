@@ -1,3 +1,6 @@
 import pandas as pd
+import numpy
 
-food_info = pd.read_csv("food_info.csv")
+titanic_survival= pd.read_csv("titanic_survivalcsv")
+
+# si on ajoute (axis=1) a la methode .apply() on applique la fonction a chaque ligne
