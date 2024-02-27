@@ -477,6 +477,22 @@ print(row_100_var)
 ```
 ------
 ```Python
+# Un objet series peut contenir plusieurs type d'objet :
+# float | int | bool | datetime64[ns] | datetime64[ns,tz] | timedelta | category | objet
+```
+------
+```Python
+import pandas as pd
+
+
+# pandas.to_datetime() est une fonction qui convertit les dates en datetime64.
+
+unrate = pd.read_csv('unrate.csv')
+unrate['DATE'] = pd.to_datetime(unrate['DATE'])
+print(unrate.head(12))
+
+# ici, nous avons converti la colonne 'DATE' en datetime64. Nous pouvons maintenant accéder aux attributs de la date
+# et utiliser des méthodes pour les manipuler.
 
 ```
 ------
@@ -488,3 +504,54 @@ print(row_100_var)
 
 ```
 ------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
+```Python
+
+```
+------
+
