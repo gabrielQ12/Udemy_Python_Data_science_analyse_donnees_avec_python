@@ -497,9 +497,220 @@ print(unrate.head(12))
 ```
 ------
 ```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+## pyplot est une collection de fonctions dans le module matplotlib 
+# il sert a tracer des graphiques et les personnaliser
+
+# plt.plot() sert a tracer un graphique
+# plt.show() sert a afficher le graphique
+
+# plt.plot(x_value, y_value) permet de tracer un graphique avec les valeurs de x et y
+
+first_year = unrate[0:12]
+plt.plot(first_year['DATE'], first_year['UNRATE'])
+plt.show()
+```
+------
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+
+first_year = unrate[0:12]
+plt.plot(first_year['DATE'], first_year['UNRATE'])
+# plt.xticks(rotation=90) permet de faire pivoter les valeurs de l'axe x de 90°
+# matplotlib.pyplot.xticks(*args, **kwargs)
+# marche aussi avec yticks
+# plt.xticks(rotatio,=45) permet de faire pivoter les valeurs de l'axe x de 45°
+
+plt.plot(first_year['DATE'], first_year['UNRATE'])
+plt.xticks(rotation=90)
+plt.show()
+```
+------
+
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+
+first_year = unrate[0:12]
+
+# il est important de bien documenter ses graphiques et les nommer
+# plt.xlabel() et plt.ylabel() permettent de nommer les axes x ou y
+# plt.title() permet de donner un titre au graphique
+
+
+plt.plot(first_year['DATE'], first_year['UNRATE'])
+plt.xticks(rotation=90)
+plt.xlabel('Mois')
+plt.ylabel('Taux de chômage (en %)')
+plt.title('Evolution du taux de chômage en 1948 au USA')
+plt.show()
+```
+------
+
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+
+
+fig=plt.figure()
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+
+# ici add_subplot(2,1,1) signifie que nous allons ajouter un graphique à la première ligne de la figure,
+
+
+# axes_object = fig.add_subplot(nrows,ncols, plot_number)
+
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,2)
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
+
+
+# les graphiques ce lisent toujours de gauche à droite et de haut en bas donc 1 en haut à gauche, 2 en haut à droite, 3 en bas à gauche et 4 en bas à droite
+
+fig = plt.figure()
+ax1 = fig.add_subplot(4,1,1)
+ax2 = fig.add_subplot(4,1,2)
+ax3 = fig.add_subplot(4,1,3)
+ax4 = fig.add_subplot(4,1,4)
+
+
+# les graphiques ce lisent toujours de gauche à droite et de haut en bas donc ici on les lis de haut en bas 
+
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
+
+plt.show()
+
+# les graphiques ce lisent toujours de gauche à droite et de haut en bas donc ici on les lis de haut en bas mais on a sauté le 2
+```
+------
+
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+x_values = [0.0, 0.5 ,1.0]
+y_values = [10, 20, 40]
+
+# ax1.plot(x_values, y_values)
+
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
+
+ax1.plot(x_values, y_values)
+
+plt.show()
+```
+------
+
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+fig = plt.figure(figsize=(15, 8))
+
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ax1.plot(unrate[0:12]['DATE'], unrate[0:12]['UNRATE'])
+ax1.set_title('Taux de chomage en 1948')
+
+
+ax2.plot(unrate[12:24]['DATE'], unrate[12:24]['UNRATE'])
+ax2.set_title('Taux de chomage en 1949')
+
+
+plt.show()
+
+# on peu utilisé figsize pour changer la taille de la figure et donc les dimension d'affichage des graphiques
 
 ```
 ------
+
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+fig = plt.figure(figsize=(12,12))
+
+for i in range(5):
+    ax = fig.add_subplot(5,1,i+1)
+    start_index = i*12
+    end_index = (i+1)*12
+    subset = unrate[start_index:end_index]
+    ax.plot(subset['DATE'], subset['UNRATE'])
+    
+# ici on a 5 graphiques, chacun representant une annee differente ils permettent de voir l'evolution du taux de chomage
+    
+plt.show()
+```
+------
+
+```Python
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+
+unrate = pd.read_csv('unrate.csv') 
+
+# series.dt.month permet de recuperer le mois de la date
+
+# unrate['MONTH'] = unrate['DATE'].dt.month
+
+fig = plt.figure(figsize=(6,6))
+
+plt.plot(unrate[0:12]['MONTH'] , unrate[0:12]['UNRATE'])
+plt.plot(unrate[12:24]['MONTH'] , unrate[12:24]['UNRATE'], c='red')
+
+plt.show()
+```
+------
+
 ```Python
 
 ```
@@ -519,7 +730,6 @@ print(unrate.head(12))
 
 ```
 ------
-
 ```Python
 
 ```
@@ -529,27 +739,30 @@ print(unrate.head(12))
 
 ```
 ------
-
 ```Python
 
 ```
 ------
-
 ```Python
 
 ```
 ------
-
 ```Python
 
 ```
 ------
-
 ```Python
 
 ```
 ------
+```Python
 
+```
+------
+```Python
+
+```
+------
 ```Python
 
 ```
